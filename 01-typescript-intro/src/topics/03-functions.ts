@@ -15,8 +15,27 @@ function multiply(firstNumber:number, secondNumber?:number, base:number = 2) {
 // const multiplyResult:number = multiply(5)
 // console.log({multiplyResult})
 
-const healCharacter = (character, amount:number) => {
-    character.pv += amount;
+interface Character {
+    name:string;
+    hp:number;
+    showHp: () => void;
 }
+
+const healCharacter = (character: Character, amount:number) => {
+    character.hp += amount;
+}
+
+const aaragon:Character = {
+    name: 'Aaragon',
+    hp: 50,
+    showHp() {
+        console.log(`Puntos de vida ${this.hp}`);
+    }
+
+}
+
+healCharacter(aaragon, 25);
+healCharacter(aaragon, 5);
+aaragon.showHp();
 
 export {};

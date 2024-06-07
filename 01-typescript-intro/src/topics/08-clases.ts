@@ -1,12 +1,17 @@
 export class Person {
-    public name:string;
-    private address:string;
+    // public name:string;
+    // private address:string;
 
-    constructor() {
-        this.name = 'José';
-        this.address = 'New York';
-    }
+    // constructor(name:string, address:string) {
+    //     this.name = name;
+    //     this.address = address;
+    // }
+
+    constructor(
+        public name:string, 
+        private address:string = 'No Address'
+    ){ }
 }
 
-const ironMan:Person = new Person();
+const ironMan:Person = new Person('IronMan', 'New York');
 console.log(ironMan);

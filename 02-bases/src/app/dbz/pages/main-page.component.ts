@@ -29,4 +29,10 @@ export class MainPageComponent  {
     console.log(character);
     this.character.push(character);
   }
+
+  onDeleteCharacter(idx:number):void {
+    console.log('desde main page');
+    console.log(idx);
+    this.character.splice(idx,1);
+  }
 }

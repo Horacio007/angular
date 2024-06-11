@@ -3,9 +3,9 @@
 
 <div class="row">
   <div class="col">
-    <app-dbz-list [characterList]="character" (onDeleteCharacter)="onDeleteCharacter($event)"></app-dbz-list>
+    <app-dbz-list [characterList]="dbzService.character" (onDeleteCharacter)="dbzService.onDeleteCharacter($event)"></app-dbz-list>
   </div>
   <div class="col">
-    <app-dbz-add-character (onNewCharacter)="onNewCharacter($event)"></app-dbz-add-character>
+    <app-dbz-add-character (onNewCharacter)="dbzService.onNewCharacter($event)"></app-dbz-add-character>
   </div>
 </div>

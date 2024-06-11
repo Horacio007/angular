@@ -8,6 +8,7 @@ import { Character } from '../interfaces/character.interface';
 })
 
 export class MainPageComponent  {
+
   public character:Character[] = [
     {
       name:'Krilin',
@@ -22,4 +23,10 @@ export class MainPageComponent  {
       power: 7500
     }
   ];
+
+  onNewCharacter(character:Character):void {
+    console.log("Main Page");
+    console.log(character);
+    this.character.push(character);
+  }
 }

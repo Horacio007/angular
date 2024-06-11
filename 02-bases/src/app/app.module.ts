@@ -1,11 +1,11 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { CounterModule } from './counter/counter.module';
-import { HeroesModule } from './heroes/heroes.module';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
+import { CounterModule } from './counter/counter.module';
+import { DbzModule } from './dbz/dbz.module';
+import { HeroesModule } from './heroes/heroes.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
     imports: [
     CounterModule,
     HeroesModule,
+    DbzModule,
     BrowserModule,
     AppRoutingModule
   ],

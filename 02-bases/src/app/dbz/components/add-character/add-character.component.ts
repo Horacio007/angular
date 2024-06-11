@@ -23,8 +23,7 @@ export class AddCharacterComponent {
     if (this.character.name.length === 0) return;
 
     this.onNewCharacter.emit(this.character);
-
-    this.character.name = '';
-    this.character.power = 0;
+    //debugger;
+    this.character = {name:'', power:0}
   }
 }

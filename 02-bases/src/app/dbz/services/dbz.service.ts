@@ -35,6 +35,15 @@ export class DbzService {
     this.character.push(newCharacter);
   }
 
+  addCharacter(character:Character):void {
+    console.log("Main Page");
+    console.log(character);
+
+    const newCharacter:Character = {id:uuid(), ...character};
+
+    this.character.push(newCharacter);
+  }
+
   onDeleteCharacter(idx:number):void {
     console.log('desde main page');
     console.log(idx);

@@ -9,8 +9,12 @@ import { GifsService } from '../../../gifs/services/gifs.service';
 export class SidebarComponent {
   constructor(private gifsService:GifsService) { }
 
-  get tagHistory() {
+  get tagHistory():string[] {
     return this.gifsService.tagsHistory;
+  }
+
+  searchGifAgain(tag:string):void {
+    this.gifsService.searchTag(tag);
   }
 
 }

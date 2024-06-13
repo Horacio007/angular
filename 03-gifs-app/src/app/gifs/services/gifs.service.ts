@@ -45,7 +45,7 @@ export class GifsService {
     this.http.get<SearchResponse>(`${this._serviceURL}/search?`, {params}).subscribe(response => {
       // console.log(response.data);
       this.gifList = response.data;
-      console.log(this.gifList);
+      // console.log(this.gifList);
       // console.log(response.jotdog);
     })
     // fetch('https://api.giphy.com/v1/gifs/search?api_key=8cnhBdMzYcTqS504AV0ioTRV3KoYcrZJ&q=toreto&limit=10')

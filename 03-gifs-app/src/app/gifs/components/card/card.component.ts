@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Gif } from '../../interfaces/gifs.interfaces';
 
 @Component({
-  selector: 'card',
+  selector: 'gifs-card',
   templateUrl: './card.component.html'
 })
 export class CardComponent implements OnInit {

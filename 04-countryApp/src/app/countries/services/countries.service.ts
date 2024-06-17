@@ -2,11 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, tap, map, catchError, of, delay } from 'rxjs';
 import { Country } from '../interfaces/country.interface';
+import { CacheStore } from '../interfaces/cache-store.interface';
+import { Region } from '../interfaces/region.type';
 
 @Injectable({providedIn: 'root'})
 export class CountriesService {
 
   private apiURL:string="https://restcountries.com/v3.1";
+
+  public cacheStore:CacheStore = {
+    byCapital: { term:'', countries: [] },
+    byCountries: { term:'', countries: [] },
+    byRegion: { term:'', countries: [] }
+  }
 
   constructor(private http:HttpClient) { }
 
@@ -40,7 +48,9 @@ export class CountriesService {
 
   searchCapital(term:string):Observable<Country[]> {
     const url:string = `${this.apiURL}/capital/${term}`;
-    return this.getCountryRequest(url);
+    return this.getCountryRequest(url).pipe(
+      tap( countries => this.cacheStore.byCapital = {term, countries})
+    );
     //   tap(response => console.log('Paso por el tap 1', response)),
     //   map(response => []),
     //   tap(response => console.log('Paso por el tap 2', response))
@@ -48,15 +58,19 @@ export class CountriesService {
 
   searchCountry(term:string):Observable<Country[]> {
     const url:string = `${this.apiURL}/name/${term}`;
-    return this.getCountryRequest(url);
+    return this.getCountryRequest(url).pipe(
+      tap( countries => this.cacheStore.byCountries = {term, countries})
+    );
     //   tap(response => console.log('Paso por el tap 1', response)),
     //   map(response => []),
     //   tap(response => console.log('Paso por el tap 2', response))
   }
 
-  searchRegion(region:string):Observable<Country[]> {
+  searchRegion(region:Region):Observable<Country[]> {
     const url:string = `${this.apiURL}/region/${region}`;
-    return this.getCountryRequest(url);
+    return this.getCountryRequest(url).pipe(
+      tap( countries => this.cacheStore.byRegion = {term:region, countries})
+    );
     //   tap(response => console.log('Paso por el tap 1', response)),
     //   map(response => []),
     //   tap(response => console.log('Paso por el tap 2', response))

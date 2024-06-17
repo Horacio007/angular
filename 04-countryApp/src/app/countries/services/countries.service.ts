@@ -24,4 +24,32 @@ export class CountriesService {
     );
   }
 
+  searchCountry(term:string):Observable<Country[]> {
+    const url:string = `${this.apiURL}/name/${term}`;
+    return this.http.get<Country[]>(url).pipe(
+      catchError(error => {
+        console.log(error);
+
+        return of([]);
+      })
+    //   tap(response => console.log('Paso por el tap 1', response)),
+    //   map(response => []),
+    //   tap(response => console.log('Paso por el tap 2', response))
+    );
+  }
+
+  searchRegion(region:string):Observable<Country[]> {
+    const url:string = `${this.apiURL}/region/${region}`;
+    return this.http.get<Country[]>(url).pipe(
+      catchError(error => {
+        console.log(error);
+
+        return of([]);
+      })
+    //   tap(response => console.log('Paso por el tap 1', response)),
+    //   map(response => []),
+    //   tap(response => console.log('Paso por el tap 2', response))
+    );
+  }
+
 }

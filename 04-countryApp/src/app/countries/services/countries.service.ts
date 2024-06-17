@@ -10,6 +10,20 @@ export class CountriesService {
 
   constructor(private http:HttpClient) { }
 
+  searchCountryByAlphaCode(code:string):Observable<Country[]> {
+    const url:string = `${this.apiURL}/alpha/${code}`;
+    return this.http.get<Country[]>(url).pipe(
+      catchError(error => {
+        console.log(error);
+
+        return of([]);
+      })
+    //   tap(response => console.log('Paso por el tap 1', response)),
+    //   map(response => []),
+    //   tap(response => console.log('Paso por el tap 2', response))
+    );
+  }
+
   searchCapital(term:string):Observable<Country[]> {
     const url:string = `${this.apiURL}/capital/${term}`;
     return this.http.get<Country[]>(url).pipe(

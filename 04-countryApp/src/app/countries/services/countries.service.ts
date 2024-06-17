@@ -10,13 +10,15 @@ export class CountriesService {
 
   constructor(private http:HttpClient) { }
 
-  searchCountryByAlphaCode(code:string):Observable<Country[]> {
+  searchCountryByAlphaCode(code:string):Observable<Country | null> {
     const url:string = `${this.apiURL}/alpha/${code}`;
-    return this.http.get<Country[]>(url).pipe(
+    return this.http.get<Country[]>(url)
+    .pipe(
+      map(countries => countries.length > 0 ? countries[0] : null),
       catchError(error => {
         console.log(error);
 
-        return of([]);
+        return of(null)
       })
     //   tap(response => console.log('Paso por el tap 1', response)),
     //   map(response => []),

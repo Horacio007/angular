@@ -11,6 +11,8 @@ import { switchMap } from 'rxjs';
 })
 export class CountryPageComponent implements OnInit {
 
+  public country?:Country;
+
   constructor( private activatedRoute:ActivatedRoute, private countriesService:CountriesService, private router:Router) {
 
   }
@@ -24,8 +26,7 @@ export class CountryPageComponent implements OnInit {
       if (!response) {
         return this.router.navigateByUrl('');
       }
-      console.log('tenemos un pais');
-      return;
+      return this.country = response;
     });
   }
 

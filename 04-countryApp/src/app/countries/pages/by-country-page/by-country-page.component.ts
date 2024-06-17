@@ -10,16 +10,19 @@ import { CountriesService } from '../../services/countries.service';
 export class ByCountryPageComponent {
 
   public countries:Country[] = [];
+  public isLoading:boolean = false;
 
   constructor(private countriesService:CountriesService) {
 
   }
 
   searchByCountry(term:string):void {
+    this.isLoading = true;
     console.log('desde by country page ');
     console.log({term});
     this.countriesService.searchCountry(term).subscribe(response => {
       this.countries = response;
+      this.isLoading = false;
     });
   }
 }

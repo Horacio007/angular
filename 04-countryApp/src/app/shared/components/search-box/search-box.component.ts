@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { Subject, Subscription, debounceTime } from 'rxjs';
+import { Region } from '../../../countries/interfaces/region.type';
 
 @Component({
   selector: 'shared-search-box',
@@ -13,6 +14,9 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
 
   @Input()
   public placeHolder:string = '';
+
+  @Input()
+  public initialValue:string|Region = '';
 
   @Output()
   public onValue: EventEmitter<string> = new EventEmitter<string>();

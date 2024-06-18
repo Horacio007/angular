@@ -33,4 +33,11 @@ export class UncommonPageComponent {
     this.clientes.shift();
   }
 
+  //keyValue
+  public person = {
+    name: 'Horacio',
+    age: 26,
+    address: 'Saltillo, Coahuila de Zaragosa'
+  }
+
 }

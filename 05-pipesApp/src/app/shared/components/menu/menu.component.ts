@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PrimeIcons, MenuItem } from 'primeng/api';
+import { PrimeIcons, MenuItem, PrimeNGConfig } from 'primeng/api';
+
 
 @Component({
   selector: 'shared-menu',
@@ -15,8 +16,34 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuItems = [
-      { label: 'New', icon: PrimeIcons.PLUS },
-      { label: 'Delete', icon: PrimeIcons.TRASH }
+      {
+        label: 'Pipes de Angular',
+        icon: PrimeIcons.DESKTOP,
+        items: [
+          {
+            label: 'Textos y Fechas',
+            icon: PrimeIcons.ALIGN_LEFT
+          },
+          {
+            label: 'Números',
+            icon: PrimeIcons.DOLLAR
+          },
+          {
+            label: 'No comunes',
+            icon: PrimeIcons.GLOBE
+          }
+        ]
+      },
+      {
+        label: 'Pipes personalizados',
+        icon: PrimeIcons.COG,
+        items: [
+          {
+            label: 'Otro elemento',
+            icon: PrimeIcons.COG
+          }
+        ]
+      }
     ];
   }
 

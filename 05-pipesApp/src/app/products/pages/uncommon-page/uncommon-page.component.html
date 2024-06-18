@@ -15,7 +15,11 @@
   </div>
   <div class="col-12 md:col-6 lg:col-6">
     <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
-
+      <p>
+        Actualmente => {{ clientes.length | i18nPlural:clientsMap }}
+      </p>
+      <p-button label="Borrar cliente" (click)="deleteClient()">
+      </p-button>
     </p-fieldset>
   </div>
   <div class="col-12 md:col-6 lg:col-6">

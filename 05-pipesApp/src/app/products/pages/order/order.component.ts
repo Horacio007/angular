@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Color, Hero } from '../../interfaces/hero.interfaces';
 
 @Component({
   selector: 'products-order',
@@ -10,6 +11,34 @@ export class OrderComponent implements OnInit {
 
   public items: MenuItem[] | undefined;
   public isUpperCase:boolean = false;
+
+  public heroes:Hero[] = [
+    {
+      name: 'Superman',
+      canFly: true,
+      color: Color.blue
+    },
+    {
+      name: 'Batman',
+      canFly: false,
+      color: Color.black
+    },
+    {
+      name: 'Daredevil',
+      canFly: false,
+      color: Color.red
+    },
+    {
+      name: 'Robin',
+      canFly: false,
+      color: Color.green
+    },
+    {
+      name: 'Green Lantern',
+      canFly: true,
+      color: Color.green
+    }
+  ]
 
   constructor() { }
 

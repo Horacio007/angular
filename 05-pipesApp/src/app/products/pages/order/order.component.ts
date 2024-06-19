@@ -7,7 +7,11 @@ import { MenuItem } from 'primeng/api';
   styleUrl: './order.component.css'
 })
 export class OrderComponent implements OnInit {
-  items: MenuItem[] | undefined;
+
+  public items: MenuItem[] | undefined;
+  public isUpperCase:boolean = false;
+
+  constructor() { }
 
   ngOnInit() {
       this.items = [
@@ -21,4 +25,10 @@ export class OrderComponent implements OnInit {
           }
       ];
   }
+
+  toggleUpperCase():void {
+    this.isUpperCase = !this.isUpperCase;
+  }
+
+
 }

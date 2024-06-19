@@ -1,13 +1,13 @@
 <p-panel header="Pipes personalizados" class="p-1">
   <p>
-    Pipes personalizados - creados por nosotros {{ 'soy el toggle case' | toggleCase:false  }}
+    Pipes personalizados - creados por nosotros {{ 'soy el toggle case' | toggleCase:isUpperCase  }}
   </p>
 </p-panel>
 
 <div class="card">
   <p-toolbar>
     <div class="p-toolbar-group-start">
-      <p-button label="ToggleCase" icon="pi pi-search" class="mr-2"/>
+      <p-button label="ToggleCase" icon="pi pi-search" class="mr-2" (onClick)="toggleUpperCase()"/>
     </div>
     <div class="p-toolbar-group-start">
         <p-button label="Por nombre" icon="pi pi-sort" severity="info" class="mr-2"/>

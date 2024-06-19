@@ -40,6 +40,8 @@ export class OrderComponent implements OnInit {
     }
   ]
 
+  public orderBy?:keyof Hero;
+
   constructor() { }
 
   ngOnInit() {
@@ -59,5 +61,8 @@ export class OrderComponent implements OnInit {
     this.isUpperCase = !this.isUpperCase;
   }
 
+  changeOrder(value: keyof Hero) {
+    this.orderBy = value;
+  }
 
 }

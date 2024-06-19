@@ -10,9 +10,9 @@
       <p-button label="ToggleCase" icon="pi pi-search" class="mr-2" (onClick)="toggleUpperCase()"/>
     </div>
     <div class="p-toolbar-group-start">
-        <p-button label="Por nombre" icon="pi pi-sort" severity="info" class="mr-2"/>
-        <p-button label="Por volar" icon="pi pi-sort" severity="danger" class="mr-2"/>
-        <p-button label="Por color" icon="pi pi-sort" severity="help"/>
+        <p-button (click)="changeOrder('name')" label="Por nombre" icon="pi pi-sort" severity="info" class="mr-2"/>
+        <p-button (click)="changeOrder('canFly')" label="Por volar" icon="pi pi-sort" severity="danger" class="mr-2"/>
+        <p-button (click)="changeOrder('color')" label="Por color" icon="pi pi-sort" severity="help"/>
     </div>
   </p-toolbar>
 </div>
@@ -20,7 +20,7 @@
 <div class="grid">
   <div class="col mt-2">
     <p-panel header="Heroes">
-      <p-table [value]="heroes | sortBy:'canFly'" [tableStyle]="{ 'min-width': '50rem' }">
+      <p-table [value]="heroes | sortBy:orderBy" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
             <tr>
                 <th>Name</th>

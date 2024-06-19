@@ -13,6 +13,7 @@ import { RippleModule } from 'primeng/ripple';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   exports: [
@@ -28,7 +29,8 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     RippleModule,
     SelectButtonModule,
     ToolbarModule,
-    SplitButtonModule
+    SplitButtonModule,
+    TableModule
   ]
 })
 export class PrimeNGModule { }

@@ -31,7 +31,7 @@
         <ng-template pTemplate="body" let-heroes>
             <tr>
                 <td>{{ heroes.name }}</td>
-                <td>{{ heroes.canFly }}</td>
+                <td>{{ heroes.canFly | canFly | titlecase }}</td>
                 <td>{{ heroes.color }}</td>
             </tr>
         </ng-template>

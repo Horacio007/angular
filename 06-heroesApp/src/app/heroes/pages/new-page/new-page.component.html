@@ -1,4 +1,7 @@
-<h1>Editar / Agregar Héroe</h1>
+<h1>
+  {{ currentHero.id ? 'Editar' : 'Agregar' }} Héroe
+  <small *ngIf="currentHero.id">{{ currentHero.superhero }}</small>
+</h1>
 <small>Superman</small>
 <mat-divider class="mb-2"></mat-divider>
 <div class="grid">
@@ -37,9 +40,10 @@
         </form>
       </mat-card-content>
       <div class="flex justify-content-between">
-        <button mat-flat-button color="warm">
+        <button *ngIf="currentHero.id" mat-flat-button color="warm">
           Borrar
         </button>
+        <span></span>
         <button mat-flat-button color="primary" (click)="onSubmit()">
           <mat-icon>save</mat-icon>
           Guardar

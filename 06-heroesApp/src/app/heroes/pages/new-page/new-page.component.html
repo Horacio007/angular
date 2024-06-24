@@ -40,7 +40,7 @@
         </form>
       </mat-card-content>
       <div class="flex justify-content-between">
-        <button *ngIf="currentHero.id" mat-flat-button color="warm">
+        <button *ngIf="currentHero.id" mat-flat-button color="warm" (click)="onDeletedHero()">
           Borrar
         </button>
         <span></span>

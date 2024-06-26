@@ -47,6 +47,10 @@ export class DynamicPageComponent {
     return null;
   }
 
+  onDeleteFavorite(idx:number):void {
+    this.favoriteGames.removeAt(idx);
+  }
+
   onSubmit():void {
     if(this.myForm.invalid) {
       this.myForm.markAllAsTouched();

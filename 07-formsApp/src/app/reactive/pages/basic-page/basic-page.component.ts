@@ -21,7 +21,29 @@ export class BasicPageComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.myForm.reset(rtx5090);
+    // this.myForm.reset(rtx5090);
+    this.myForm.reset();
+  }
+
+  isValidField(field:string):boolean|null {
+    return this.myForm.controls[field].errors && this.myForm.controls[field].touched;
+  }
+
+  getFieldError(field:string):string|null {
+    if(!this.myForm.controls[field]) return null;
+
+    const errors = this.myForm.controls[field].errors || {};
+
+    for (const key of Object.keys(errors)) {
+      switch(key) {
+        case 'required':
+          return 'Este  campo es requerido.';
+        case 'minlength':
+          return `Mínimo ${errors['minlength'].requiredLength} caracteres`
+      }
+    }
+
+    return null;
   }
 
   onSave():void {
@@ -32,7 +54,8 @@ export class BasicPageComponent implements OnInit {
 
     console.log(this.myForm.value);
 
-    this.myForm.reset({price:10, inStorage:2546});
+    // this.myForm.reset({price:10, inStorage:2546});
+    this.myForm.reset();
   }
 
 }

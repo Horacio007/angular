@@ -1,4 +1,22 @@
-# GifsApp
+# Temas Puntuales
+- Modularización de la aplicación
+- Estructura de la aplicación de media a gran escala
+- Componentes
+- ViewChild
+- Servicios
+- Historial de búsquedas
+- Uso de Api Keys
+- LocalStorage
+- Peticiones HTTP
+- Animaciones mediante css
+- @Inputs
+- @Outputs
+- Custom Components
+- Validaciones
+- Importación de módulos personalizados
+- Entre otras cosas
+
+ #  GifsApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.2.
 

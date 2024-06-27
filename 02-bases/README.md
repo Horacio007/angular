@@ -1,3 +1,27 @@
+# Temas Puntuales
+- Crear proyectos de Angular
+- Explicar cada archivo y directorio de un proyecto
+- Componentes
+- Módulos
+- One way data binding
+- Uso del AngularCLI - Angular Command Line Interface
+- Directivas creadas por Angular
+- ngIf y ngIf-else
+- Y más...
+- Profundizar un poco más en los módulos
+- FormsModule
+- ngModel
+- @Inputs
+- @outputs
+- Servicios
+- Métodos en servicios
+- Depuraciones
+- Generar build de producción
+- Desplegarlo rápidamente
+- Netlify
+- GitHub Pages
+- npm Scripts para automatizar el proceso
+
 # Bases
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.2.

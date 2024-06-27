@@ -1,3 +1,9 @@
+# Temas Puntuales
+- Selectores anidados
+- Llenar selectores desde peticiones HTTP
+- Encadenamiento de operadores de RXJS
+- Explicar el por qué la gente dice que TypeScript no es del todo "Type Safe"
+
 # Selectores
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.2.

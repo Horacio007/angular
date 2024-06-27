@@ -1,3 +1,11 @@
+# Temas Puntuales
+- Validaciones manuales
+- Validaciones asíncronas
+- Validar contra expresiones regulares
+- Separar la lógica de validaciones
+- Estado del formulario
+- Mensajes de error personalizados
+
 # FormsApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.2.

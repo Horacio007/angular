@@ -16,7 +16,13 @@ export class RegisterPageComponent {
     username: ['', [Validators.required, this.validatorService.cantBeStrider ]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     password2: ['', [Validators.required]]
-  });
+  },
+  {
+    validators: [
+      this.validatorService.isFieldOneEqualFieldTwo('password', 'password2')
+    ]
+  }
+  );
 
   constructor(private fb:FormBuilder, private validatorService:ValidatorsService, private emailValidator:EmailValidator) { }
 

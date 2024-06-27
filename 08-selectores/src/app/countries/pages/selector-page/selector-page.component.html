@@ -16,11 +16,11 @@
   <!-- Countries -->
   <div class="row mb-3">
     <div class="col">
-      <label class="form-label">Continente:</label>
-      <select class="form-control" formControlName="region">
-        <option value="">>---Seleccione Continente---<</option>
-        <option *ngFor="let region of regions" [value]="region">
-          {{ region }}
+      <label class="form-label">Paises:</label>
+      <select class="form-control" formControlName="country">
+        <option value="">>---Seleccione Paises---<</option>
+        <option *ngFor="let country of countriesByRegion" [value]="country.cca3">
+          {{ country.name }}
         </option>
       </select>
     </div>
@@ -28,12 +28,12 @@
   <!-- Pais -->
   <div class="row mb-3">
     <div class="col">
-      <label class="form-label">Continente:</label>
-      <select class="form-control" formControlName="region">
-        <option value="">>---Seleccione Continente---<</option>
-        <option *ngFor="let region of regions" [value]="region">
-          {{ region }}
-        </option>
+      <label class="form-label">Paises:</label>
+      <select class="form-control" formControlName="borders">
+        <option value="">>---Seleccione Paises---<</option>
+        <!-- <option *ngFor="let country of countriesByRegion" [value]="country.cca3">
+          {{ country.name }}
+        </option> -->
       </select>
     </div>
   </div>

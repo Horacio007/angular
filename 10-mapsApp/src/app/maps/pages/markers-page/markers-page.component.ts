@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { LngLat, Map, Marker } from 'mapbox-gl';
+import { Color } from '../../../../../../05-pipesApp/src/app/products/interfaces/hero.interfaces';
 
 @Component({
   selector: 'app-markers-page',
@@ -34,6 +35,25 @@ export class MarkersPageComponent implements AfterViewInit {
     //   // color: 'red'
     // }
     // ).setLngLat(this.currentLngLat).addTo(this.map);
+  }
+
+  createMarker():void {
+    if (!this.map) return;
+
+    const color = '#xxxxxx'.replace(/x/g, y=>(Math.random()*16|0).toString(16));
+    const lngLat = this.map.getCenter();
+
+    this.addMarker(lngLat, color);
+  }
+
+  addMarker(lngLat:LngLat, color:string):void {
+    if(!this.map) return;
+
+    const marker = new Marker({
+      color: color,
+      draggable: true
+    }).setLngLat(lngLat)
+    .addTo(this.map);
   }
 
 }

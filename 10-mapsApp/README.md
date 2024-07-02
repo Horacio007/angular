@@ -12,6 +12,17 @@
 - Range
 - Y más
 
+## StandAloneComponents
+- ¿Qué son?
+- ¿Para qué sirven?
+- ¿Cómo usarlos?
+- ¿Cómo cargarlos de forma perezosa?
+- ¿Cómo conectarlos entre sí?
+- ¿Cómo integrarlos en módulos y componentes tradicionales?
+### Requisito:
+* Angular 14 > (Beta)
+* Angular 15+
+
 # MapsApp
 No usar directamente AngularCLI (a menos que esten creadas las variables de entorno), ya que las variables de entorno se crean
 basados en el .env

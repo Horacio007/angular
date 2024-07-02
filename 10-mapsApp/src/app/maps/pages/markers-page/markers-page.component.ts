@@ -2,6 +2,11 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@ang
 import { LngLat, Map, Marker } from 'mapbox-gl';
 import { Color } from '../../../../../../05-pipesApp/src/app/products/interfaces/hero.interfaces';
 
+interface MarkerAndColor {
+  color:string;
+  marker:Marker;
+}
+
 @Component({
   selector: 'app-markers-page',
   templateUrl: './markers-page.component.html',
@@ -13,6 +18,7 @@ export class MarkersPageComponent implements AfterViewInit {
   public zoom:number = 13;
   public map?:Map;
   public currentLngLat:LngLat = new LngLat(-100.97836841720232, 25.46118372695294);
+  public markers:MarkerAndColor[] = [];
 
   ngAfterViewInit(): void {
 
@@ -54,6 +60,17 @@ export class MarkersPageComponent implements AfterViewInit {
       draggable: true
     }).setLngLat(lngLat)
     .addTo(this.map);
+
+    this.markers.push({
+      color: color,
+      marker:marker
+    });
+  }
+
+  deleteMarker(idx:number):void {
+    console.log('entre al dblclick');
+    this.markers[idx].marker.remove();
+    this.markers.splice(idx,1);
   }
 
 }

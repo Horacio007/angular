@@ -73,4 +73,11 @@ export class MarkersPageComponent implements AfterViewInit {
     this.markers.splice(idx,1);
   }
 
+  flyTo(marker:Marker):void {
+    this.map?.flyTo({
+      zoom:14,
+      center: marker.getLngLat()
+    });
+  }
+
 }

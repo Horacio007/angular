@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { LngLat, Map, Marker } from 'mapbox-gl';
-import { Color } from '../../../../../../05-pipesApp/src/app/products/interfaces/hero.interfaces';
 
 interface MarkerAndColor {
   color:string;

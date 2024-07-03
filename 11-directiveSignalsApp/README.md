@@ -6,6 +6,13 @@ La idea será crear una directiva robusta que nos sirva para resumir la forma c�
 
 Esta directiva que crearemos, es de uso real y dará una buena idea de qué podemos hacer con ellas.
 
+## (Requerimiento mínimo Angular 16+)
+Puntualmente veremos:
+* Utilización
+* Modificación
+* Mutación
+* Actualización
+
 # DirectiveSignalsApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.2.

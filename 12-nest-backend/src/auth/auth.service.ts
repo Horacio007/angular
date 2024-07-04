@@ -1,10 +1,11 @@
-import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, Body, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/auth.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import * as brcryptjs from 'bcryptjs';
+import { LoginDto } from './dto/login.dto';
 
 @Injectable()
 export class AuthService {
@@ -20,11 +21,6 @@ export class AuthService {
         password: brcryptjs.hashSync(password, 10),
         ...userData
       });
-      // 1 - Encriptar contraseña
-      
-      
-      // 2 - Guardar el usuario
-      
       // 3 - Generar JWT 
       // 
       await newUser.save();
@@ -37,6 +33,33 @@ export class AuthService {
       }
       throw new InternalServerErrorException('Something terrible happen!!!')
     }
+  }
+
+  async login(loginDto:LoginDto) {
+    const { email, password } = loginDto;
+
+    const user = await this.userModel.findOne({email});
+    if(!user) {
+      throw new UnauthorizedException('Not valid credentials! email')
+    }
+
+    if(!brcryptjs.compareSync(password, user.password)) {
+      throw new UnauthorizedException('Not valid credentials! paswor')
+    }
+
+    const { password:_, ...rest } = user.toJSON();
+
+    // agrupado
+    return {
+      user: rest,
+      token: 'ABC-123'
+    };
+
+    // sin agrupar
+    // return {
+    //   ...rest,
+    //   token: 'ABC-123'
+    // };
   }
 
   findAll() {

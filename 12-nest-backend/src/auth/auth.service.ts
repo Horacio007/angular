@@ -8,6 +8,8 @@ import * as brcryptjs from 'bcryptjs';
 import { LoginDto } from './dto/login.dto';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './interfaces/jwt.payload';
+import { LoginResponse } from './interfaces/login-response';
+import { RegisterDto } from './dto/register.dto';
 
 @Injectable()
 export class AuthService {
@@ -25,8 +27,7 @@ export class AuthService {
         password: brcryptjs.hashSync(password, 10),
         ...userData
       });
-      // 3 - Generar JWT 
-      // 
+
       await newUser.save();
       const {password:_, ...user} = newUser.toJSON();
 
@@ -39,7 +40,18 @@ export class AuthService {
     }
   }
 
-  async login(loginDto:LoginDto) {
+  async register(registerDto:RegisterDto):Promise<LoginResponse> {
+    const user:CreateUserDto = registerDto;
+    const newUser:User = await this.create(user)
+    const loginDto:LoginDto = {
+      email: newUser.email,
+      password: newUser.password
+    }
+    
+    return await this.login(loginDto);
+  }
+
+  async login(loginDto:LoginDto):Promise<LoginResponse> {
     const { email, password } = loginDto;
 
     const user = await this.userModel.findOne({email});

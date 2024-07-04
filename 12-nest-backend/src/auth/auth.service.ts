@@ -6,12 +6,16 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import * as brcryptjs from 'bcryptjs';
 import { LoginDto } from './dto/login.dto';
+import { JwtService } from '@nestjs/jwt';
+import { JwtPayload } from './interfaces/jwt.payload';
 
 @Injectable()
 export class AuthService {
 
   constructor (
-    @InjectModel(User.name) private userModel: Model<User>
+    @InjectModel(User.name) 
+    private userModel: Model<User>,
+    private jwtService: JwtService
   ) { }
 
   async create(createUserDto: CreateUserDto):Promise<User> {
@@ -52,7 +56,7 @@ export class AuthService {
     // agrupado
     return {
       user: rest,
-      token: 'ABC-123'
+      token: await this.getJWToken({id: user.id})
     };
 
     // sin agrupar
@@ -60,6 +64,10 @@ export class AuthService {
     //   ...rest,
     //   token: 'ABC-123'
     // };
+  }
+
+  getJWToken(payload:JwtPayload) {
+    return this.jwtService.signAsync(payload);
   }
 
   findAll() {

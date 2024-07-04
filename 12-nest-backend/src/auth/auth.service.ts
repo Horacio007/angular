@@ -1,15 +1,12 @@
 import { BadRequestException, Body, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/auth.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import * as brcryptjs from 'bcryptjs';
-import { LoginDto } from './dto/login.dto';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './interfaces/jwt.payload';
 import { LoginResponse } from './interfaces/login-response';
-import { RegisterDto } from './dto/register.dto';
+import { CreateUserDto, LoginDto, RegisterUserDto, UpdateUserDto } from './dto';
 
 @Injectable()
 export class AuthService {
@@ -40,15 +37,27 @@ export class AuthService {
     }
   }
 
-  async register(registerDto:RegisterDto):Promise<LoginResponse> {
-    const user:CreateUserDto = registerDto;
-    const newUser:User = await this.create(user)
-    const loginDto:LoginDto = {
-      email: newUser.email,
-      password: newUser.password
+  async register(registerUserDto:RegisterUserDto):Promise<LoginResponse> {
+    // mi forma -> :)
+    // const user:CreateUserDto = registerUserDto;
+    // const newUser:User = await this.create(user)
+    // const loginDto:LoginDto = {
+    //   email: newUser.email,
+    //   password: newUser.password
+    // }
+    
+    // return await this.login(loginDto);
+    // forma del curso 
+    // primera forma con destructuracion
+    //const user = await this.create({email:registerUserDto.email, name:registerUserDto.name, password:registerUserDto.password});
+    // con una forma de todo se parece y lo acepta
+    const user = await this.create(registerUserDto);
+
+    return {
+      user: user,
+      token: await this.getJWToken({id: user._id})
     }
     
-    return await this.login(loginDto);
   }
 
   async login(loginDto:LoginDto):Promise<LoginResponse> {

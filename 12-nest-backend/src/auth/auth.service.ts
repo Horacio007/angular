@@ -55,7 +55,7 @@ export class AuthService {
 
     return {
       user: user,
-      token: await this.getJWToken({id: user._id})
+      token: await this.getJwtToken({id: user._id})
     }
     
   }
@@ -77,7 +77,7 @@ export class AuthService {
     // agrupado
     return {
       user: rest,
-      token: await this.getJWToken({id: user.id})
+      token: await this.getJwtToken({id: user.id})
     };
 
     // sin agrupar
@@ -87,8 +87,8 @@ export class AuthService {
     // };
   }
 
-  getJWToken(payload:JwtPayload) {
-    return this.jwtService.signAsync(payload);
+  getJwtToken(payload:JwtPayload) {
+    return this.jwtService.sign(payload);
   }
 
   findAll():Promise<User[]> {
@@ -101,15 +101,15 @@ export class AuthService {
     return rest;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} auth`;
-  }
+  // findOne(id: number) {
+  //   return `This action returns a #${id} auth`;
+  // }
 
-  update(id: number, updateUserto: UpdateUserDto) {
-    return `This action updates a #${id} auth`;
-  }
+  // update(id: number, updateUserto: UpdateUserDto) {
+  //   return `This action updates a #${id} auth`;
+  // }
 
-  remove(id: number) {
-    return `This action removes a #${id} auth`;
-  }
+  // remove(id: number) {
+  //   return `This action removes a #${id} auth`;
+  // }
 }

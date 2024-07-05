@@ -1,7 +1,7 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environments';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { LoginRequest, LoginResponse, User } from '../interfaces';
 import { AuthStatus } from '../enum/auth-status.enum';
 
@@ -34,8 +34,8 @@ export class AuthService {
         localStorage.setItem('token', token);
         console.log(user, token);
       }),
-      map(() => true)
-      //TODO: ERROS
+      map(() => true),
+      catchError(error => throwError(() => error.error.message))
     );
   }
 }

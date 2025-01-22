@@ -1,0 +1,36 @@
+<app-title title="Defer Views | Blocks"></app-title>
+
+<section class=" grid">
+  <div class="col">
+    @defer () {
+      <app-heavy-loaders-slow cssClass="bg-blue-500"></app-heavy-loaders-slow>
+    } @placeholder {
+      <p class="h-30rem w-full custom-bg-gradient animate-pulse">
+        Cargando...
+      </p>
+    }
+  </div>
+</section>
+<section class="grid">
+  <div class="col">
+    @defer (on idle) {
+      <app-heavy-loaders-slow cssClass="bg-green-500"></app-heavy-loaders-slow>
+    } @placeholder {
+      <p class="h-30rem w-full custom-bg-gradient animate-pulse">
+        Cargando...
+      </p>
+    }
+  </div>
+</section>
+<section class="grid">
+  <div class="col">
+    @defer (on viewport) {
+      <app-heavy-loaders-slow cssClass="bg-purple-500"></app-heavy-loaders-slow>
+    } @placeholder {
+      <p class="h-30rem w-full custom-bg-gradient animate-pulse">
+        Cargando...
+      </p>
+    }
+  </div>
+</section>
+
